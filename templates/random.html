@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Random
+{% endblock %}
+
+{% block main %}
+    {% for meal in meals %}
+        <div style="border-bottom: 5px solid black;">
+            <p><h2>{{meal['strMeal']}}</h2></p>
+            <p>Category: {{meal['strCategory']}}</p>
+            <form action="/add_favorite" method="post">
+                <input name="id" type="hidden" value="{{meal['idMeal']}}">
+                <input name="meal_name" type="hidden" value="{{meal['strMeal']}}">
+                <input name="select" type="submit" value="Add to Favorites">
+            </form>
+            <br>
+            <div>
+                <img src="{{meal['strMealThumb']}}" width="50%" style='float: right;'>
+                <h4 class="text-start">Instructions</h4>
+
+                <ol>
+                    {% set list1 = meal['strInstructions'].split('.') %}
+                    {% set list1 = list1[:-1] %}
+                    {% for item in list1 %}
+                        <li class="text-start">{{ item }}</li>
+                    {% endfor %} 
+                </ol>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-start">Ingredient</th>
+                        <th class="text-start">Measure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(1,21)%}
+                        {% if meal['strIngredient'~i] != '' and meal['strIngredient'~i] != None %}
+                            <tr>
+                                <td class="text-start">{{meal['strIngredient' ~ i]}}</td>
+                                <td class="text-start">{{meal['strMeasure' ~ i]}}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+{% endblock %}

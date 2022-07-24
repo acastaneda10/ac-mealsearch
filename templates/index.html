@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <p>Access favorites, categories, random meal, and ingredient search through the navbar!</p>
+    <p>Try searching for a meal name below.</p>
+    <form action="/search" method="get">
+        <input autocomplete="off" autofocus id="search" name="search" placeholder="Search" type="text">
+        <input type="submit">
+    </form>
+
+{% endblock %}
+
