@@ -1,0 +1,32 @@
+{% extends "list.html" %}
+
+{% block title %}
+    Category
+{% endblock %}
+
+
+{% block search %}
+<form action="/categories" method="get" class="input-group justify-content-center">
+    <select name="search" id="category" class="form-select">
+      <option disabled selected>Choose Category</option>
+      {% for category in cats %}
+      <option value="{{category['strCategory']}}">{{category['strCategory']}}</option>
+      {% endfor %}
+    </select>
+    <button class="btn btn-dark btn-lg" type="submit">Submit</button>
+</form>
+<h2 class="text-center text-black mt-5">Search Results</h2>
+<p class="lead text-center text-black mb-5">
+    Click on "See Details" to view a detailed page on meal including instructions and ingredient list.
+</p>
+{% endblock %}
+
+<form action="/categories" method="get" class="form-group">
+    <select name="search" id="category" class="form-control">
+        <option disabled selected>Categories</option>
+        {% for category in cats %}
+        <option value="{{category['strCategory']}}">{{category['strCategory']}}</option>
+        {% endfor %}
+    </select>
+    <button class="btn btn-dark btn-lg" type="submit">Submit</button>
+</form>

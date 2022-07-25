@@ -5,17 +5,25 @@
 {% endblock %}
 
 {% block main %}
-<p> Click on "See Meals" to search for meals with that ingredient!</p>
-    {% for ingredient in ingredients %}
-        <div style="border-bottom: 5px solid black;">
-            <p><h2>{{ingredient['strIngredient']}}</h2></p>
-            <br>
-            <p>{{ingredient['strDescription']}}</p>
-            <form action="/ingredients" method="get">
-                <input name="search" type="hidden" value="{{ingredient['strIngredient']}}">
-                <input type="submit" value="See Meals">
-            </form>
-            <br>
+<section class="p-3">
+    <div class="container">
+        <h1 class="text-center">Ingredients</h1>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row g-3">
+            {% for ingredient in ingredients %}
+                <a href="/ingredients?search={{ingredient['strIngredient']}}" class="col-md-6 col-lg-2 text-decoration-none text-black">
+                    <div class="card bg-light h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ingredient['strIngredient']}}</h5>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+</section>
+
 {% endblock %}

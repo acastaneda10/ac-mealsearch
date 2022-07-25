@@ -1,0 +1,17 @@
+{% extends "list.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+
+{% block search %}
+<form action="/search" method="get" class="input-group">
+    <input autocomplete="off" id="search" name="search" type="text" class="form-control" placeholder="Search">
+    <button class="btn btn-dark btn-lg" type="submit">Search</button>
+</form>
+<h2 class="text-center text-black mt-5">Search Results</h2>
+<p class="lead text-center text-black mb-5">
+    Click on "See Details" to view a detailed page on meal including instructions and ingredient list.
+</p>
+{% endblock %}

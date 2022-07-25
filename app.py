@@ -8,7 +8,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required, lookup, usd, fsearch, categories, csearch, mealdetails, mealrandom, getingredients, isearch
+from helpers import apology, login_required, lookup, fsearch, categories, csearch, mealdetails, mealrandom, getingredients, isearch
 
 # Configure application
 app = Flask(__name__)
@@ -35,12 +35,9 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-
 @app.route("/")
-@login_required
 def index():
-    cats = categories()
-    return render_template("index.html", cats = cats)
+    return render_template("index.html")
 
 @app.route("/favorites")
 @login_required
@@ -62,8 +59,6 @@ def add_favorite():
         else:
             db.execute("INSERT INTO favorites (person_id, meal_id, meal_name) VALUES (?,?,?)",user,meal_id,meal_name)
             flash(f"{meal_name} added to favorites!")
-        # favorites = db.execute("SELECT * FROM favorites WHERE person_id = ?", user)
-        # return render_template("favorites.html", favorites=favorites)
         return redirect("/favorites")
 
 @app.route("/remove_favorite", methods=["POST"])
@@ -79,80 +74,45 @@ def remove_favorite():
         else:
             flash(f"Not in favorites.")
         favorites = db.execute("SELECT * FROM favorites WHERE person_id = ?", user)
-        # return render_template("favorites.html", favorites=favorites)
         return redirect("/favorites")
-    # else:
-    #     favorites = db.execute("SELECT * FROM favorites WHERE person_id = ?", user)
-    #     return render_template("favorites.html", favorites=favorites)
 
-
-@app.route("/search", methods=["GET", "POST"])
-@login_required
+@app.route("/search")
 def searchf():
-    if request.method == "POST":
-        meals = fsearch(request.form.get("letter"))
-        return render_template("search_list.html", meals = meals)
+    if not request.args.get('search'):
+        return render_template("search.html")
     else:
         search_text = request.args.get('search')
         meals = fsearch(search_text)
-        return render_template("search_list.html", meals = meals)
+        return render_template("search.html", meals = meals)
     return render_template("index.html")
 
-@app.route("/categories", methods=["GET", "POST"])
-@login_required
+@app.route("/categories")
 def searchc():
     cats = categories()
-    # if request.method == "POST":
-    #     meals = csearch(request.form.get("category"))
-    #     return render_template("category_search.html", meals = meals, cats = cats)
-    # else:
     if not request.args.get('search'):
-        return render_template("category_search.html", cats = cats)
+        return render_template("category.html", cats = cats)
     else:
         meals = csearch(request.args.get('search'))
-        return render_template("category_search.html", meals = meals, cats = cats)
+        return render_template("category.html", meals = meals, cats = cats)
 
-    # return render_template("category_search.html", cats = cats)
-
-@app.route("/details", methods=["GET", "POST"])
-@login_required
+@app.route("/details")
 def details():
-    # if request.method == "POST":
-    #     # meals = mealdetails(request.form.get("id"))
-    #     # return render_template("details.html", meals = meals)
-    #     meal_id = request.form.get("id")
-    #     return redirect(f"/details?id={meal_id}")
-    # else:
     meals = mealdetails(request.args.get('id'))
     return render_template("details.html", meals = meals)
 
 @app.route("/random")
-@login_required
 def randommeal():
     meal_id = mealrandom()
     return redirect(f"/details?id={meal_id}")
 
-@app.route("/ingredients", methods=["GET", "POST"])
-@login_required
+@app.route("/ingredients")
 def ingredients():
     if not request.args.get('search'):
         ingredients = getingredients()
         return render_template('ingredients.html', ingredients = ingredients)
     else:
         meals = isearch(request.args.get('search'))
-        return render_template("search_list.html", meals = meals)
-    # return render_template("ingredients.html", meals=meals)
-
-@app.route("/searchingredient", methods=["GET", "POST"])
-@login_required
-def searchingredient():
-    if request.method == "POST":
-        meals = isearch(request.form.get("ingredient"))
-        return render_template("search_list.html", meals = meals)
-    return render_template("index.html")
-
-
-    
+        return render_template("search.html", meals = meals)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

@@ -5,12 +5,135 @@
 {% endblock %}
 
 {% block main %}
-    <p>Access favorites, categories, random meal, and ingredient search through the navbar!</p>
-    <p>Try searching for a meal name below.</p>
-    <form action="/search" method="get">
-        <input autocomplete="off" autofocus id="search" name="search" placeholder="Search" type="text">
-        <input type="submit">
-    </form>
+    <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+        <div class="container">
+            <!-- d-flex to start flex, d-sm-flex will only flex if bigger than sm-->
+            <!-- align-items-center sets all items to vertical center of container -->
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <div>
+                    <h1>Your Online <span class="text-warning">Cookbook</span></h1>
+                    <!-- lead makes the text slightly larger, my-4 is level 4 margin in the y (above and below) -->
+                    <p class="my-2">
+                        Sometimes its difficult to decide on what to make for dinner.<br>
+                        That choice can be made easier with the various tools Meal<span class="text-danger">Search</span> provides!<br>
+ 
+                    </p>
+                    <!-- <button class="btn btn-outline-warning btn-lg" data-bs-toggle="modal" data-bs-target="#enroll">Start The Enrollment</button> -->
+                </div>
+                <!-- img-fluid contains image -->
+                <!-- w-50 sets image width to 50% (of container/space?) -->
+                <!-- d-none sets display to NONE (doesn't show image), but d-block displays block, d-sm-block will display image AFTER small breakpoint  -->
+                <img class="img-fluid w-50 d-none d-sm-block" src="static/cooking.svg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="bg-primary text-light p-5">
+        <div class="container">
+            <div class="d-md-flex justify-content-between align-items-center">
+                <h3 class="mb-3 mb-md-0">Use The Right Tool For The Job!</h3>
+                <p class="lead">
+                    You'll find plenty of useful links below!
+                </p>
+                <!-- <form action="/search" method="get" class="input-group search-input">
+                    <input autocomplete="off" id="textsearch" name="textsearch" type="text" class="form-control" placeholder="Search">
+                    <button class="btn btn-dark btn-lg" type="submit">Search</button>
+                </form> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sections -->
+    <div id="search" class="mn5"></div>
+    <section id="search" class="p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md">
+                    <img src="static/search.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-md p-5">
+                    <h2><span class="text-danger">Search</span> For The Perfect Meal</h2>
+                    <p class="lead">
+                        Know what you want?
+                    </p>
+                    <p>
+                        Use this text search to find your next kitchen experiment!
+                    </p>
+                    <form action="/search" method="get" class="input-group">
+                        <input autocomplete="off" id="textsearch" name="textsearch" type="text" class="form-control" placeholder="Search">
+                        <button class="btn btn-dark btn-lg" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="categories" class="mn5"></div>
+    <section id="categories" class="p-5 bg-dark text-light">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md p-5">
+                    <h2><span class="text-danger">Categorize</span> Your Cravings</h2>
+                    <p class="lead">
+                        Betting on breakfast? Dying for dessert? Promised some pasta? 
+                    </p>
+                    <p>
+                        Easily find a list of recipes within specific categories. 
+                    </p>
+                    <a href="/categories" class="btn btn-light mt-3">
+                        <i class="bi bi-chevron-right"></i> Categories
+                    </a>
+                </div>
+                <div class="col-md">
+                    <img src="static/categories.svg" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="random" class="mn5"></div>
+    <section id="random" class="p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md">
+                    <img src="static/random.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-md p-5">
+                    <h2><span class="text-danger">Random</span> Recommendation</h2>
+                    <p class="lead">
+                        Can't decide on what you want?  
+                    </p>
+                    <p>
+                        Our tiny e-chef can choose for you!
+                    </p>
+                    <a href="/random" class="btn btn-dark mt-3">
+                        <i class="bi bi-chevron-right"></i> Randomizer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="ingredients" class="mn5"></div>
+    <section id="ingredients" class="p-5 bg-dark text-light">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md p-5">
+                    <h2>Include Your <span class="text-danger">Ingredients</span></h2>
+                    <p class="lead">
+                        Is your pantry getting full? 
+                    </p>
+                    <p>
+                        Easily find a list of recipes that contain a special ingredient. 
+                    </p>
+                    <a href="/ingredients" class="btn btn-light mt-3">
+                        <i class="bi bi-chevron-right"></i> Ingredients
+                    </a>
+                </div>
+                <div class="col-md">
+                    <img src="static/ingredients.svg" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
 

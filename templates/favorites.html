@@ -5,30 +5,35 @@
 {% endblock %}
 
 {% block main %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th class = "text-start">Recipe</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for line in favorites %}
-            <tr>
-                <td class="text-start">{{line.meal_name}}</td>
-                <td>
-                    <form action="/details" method="get">
-                        <input name="id" type="hidden" value="{{line.meal_id}}">
-                        <input type="submit" value="See Details">
-                    </form>
-                </td>
-                <td>
-                    <form action="/remove_favorite" method="post">
-                        <input name="id" type="hidden" value="{{line.meal_id}}">
-                        <input type="submit" value="Remove">
-                    </form>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<section class="p-5">
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class = "text-start">Recipe</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for line in favorites %}
+                    <tr>
+                        <td class="text-start">{{line.meal_name}}</td>
+                        <td>
+                            <form action="/details" method="get">
+                                <input name="id" type="hidden" value="{{line.meal_id}}">
+                                <input type="submit" value="See Details" class="btn btn-outline-primary">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/remove_favorite" method="post">
+                                <input name="id" type="hidden" value="{{line.meal_id}}">
+                                <input type="submit" value="Remove" class="btn btn-outline-danger">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
 {% endblock %}
