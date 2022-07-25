@@ -7,7 +7,7 @@
 {% block main %}
     {% for meal in meals %}
     <section class="bg-light p-3 p-md-5">
-        <div class="container">
+        <div class="container-md">
             <div class="d-flex flex-column align-items-center justify-content-center">
                 <h2>{{meal['strMeal']}}</h2>
                 <p>Category: {{meal['strCategory']}}</p>
@@ -20,7 +20,7 @@
         </div>
     </section>
     <section class="p-3">
-        <div class="container">
+        <div class="container-md">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md order-md-2 mb-3 mb-md-0">
                     <img src="{{meal['strMealThumb']}}" class="img-fluid rounded border border-dark">
@@ -39,7 +39,7 @@
         </div>
     </section>
     <section>
-        <div class="container">
+        <div class="container-md">
             <table class="table table-hover">
                 <thead>
                     <tr>

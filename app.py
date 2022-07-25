@@ -80,6 +80,8 @@ def searchf():
     else:
         search_text = request.args.get('search')
         meals = fsearch(search_text)
+        if not meals:
+            flash("No Results Found!")
         return render_template("search.html", meals = meals)
     return render_template("index.html")
 
@@ -90,6 +92,8 @@ def searchc():
         return render_template("category.html", cats = cats)
     else:
         meals = csearch(request.args.get('search'))
+        if not meals:
+            flash("No Results Found!")
         return render_template("category.html", meals = meals, cats = cats)
 
 @app.route("/details")
@@ -109,6 +113,8 @@ def ingredients():
         return render_template('ingredients.html', ingredients = ingredients)
     else:
         meals = isearch(request.args.get('search'))
+        if not meals:
+            flash("No Results Found!")
         return render_template("search.html", meals = meals)
 
 @app.route("/login", methods=["GET", "POST"])

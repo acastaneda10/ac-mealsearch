@@ -2,7 +2,7 @@ import os
 import requests
 import urllib.parse
 
-from flask import redirect, render_template, request, session
+from flask import redirect, render_template, request, session, flash
 from functools import wraps
 
 
@@ -58,8 +58,8 @@ def lookup(symbol):
     except (KeyError, TypeError, ValueError):
         return None
 
-def fsearch(letter):
-    url = f"https://www.themealdb.com/api/json/v1/1/search.php?s={letter}"
+def fsearch(term):
+    url = f"https://www.themealdb.com/api/json/v1/1/search.php?s={term}"
     response = requests.get(url)
     response.raise_for_status()
     meals = response.json()['meals']

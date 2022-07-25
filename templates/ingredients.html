@@ -6,12 +6,12 @@
 
 {% block main %}
 <section class="p-3">
-    <div class="container">
+    <div class="container-md">
         <h1 class="text-center">Ingredients</h1>
     </div>
 </section>
 <section>
-    <div class="container">
+    <div class="container-md">
         <div class="row g-3">
             {% for ingredient in ingredients %}
                 <a href="/ingredients?search={{ingredient['strIngredient']}}" class="col-md-6 col-lg-2 text-decoration-none text-black">

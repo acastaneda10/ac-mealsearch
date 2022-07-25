@@ -6,7 +6,7 @@
 
 {% block main %}
     <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
-        <div class="container">
+        <div class="container-md">
             <!-- d-flex to start flex, d-sm-flex will only flex if bigger than sm-->
             <!-- align-items-center sets all items to vertical center of container -->
             <div class="d-sm-flex align-items-center justify-content-between">
@@ -30,7 +30,7 @@
 
     <!-- Newsletter -->
     <section class="bg-primary text-light p-5">
-        <div class="container">
+        <div class="container-md">
             <div class="d-md-flex justify-content-between align-items-center">
                 <h3 class="mb-3 mb-md-0">Use The Right Tool For The Job!</h3>
                 <p class="lead">
@@ -47,7 +47,7 @@
     <!-- Sections -->
     <div id="search" class="mn5"></div>
     <section id="search" class="p-5">
-        <div class="container">
+        <div class="container-md">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md">
                     <img src="static/search.svg" class="img-fluid" alt="">
@@ -61,7 +61,7 @@
                         Use this text search to find your next kitchen experiment!
                     </p>
                     <form action="/search" method="get" class="input-group">
-                        <input autocomplete="off" id="textsearch" name="textsearch" type="text" class="form-control" placeholder="Search">
+                        <input autocomplete="off" id="search" name="search" type="text" class="form-control" placeholder="Search">
                         <button class="btn btn-dark btn-lg" type="submit">Search</button>
                     </form>
                 </div>
@@ -70,9 +70,12 @@
     </section>
     <div id="categories" class="mn5"></div>
     <section id="categories" class="p-5 bg-dark text-light">
-        <div class="container">
+        <div class="container-md">
             <div class="row align-items-center justify-content-between">
-                <div class="col-md p-5">
+                <div class="col-md order-md-2">
+                    <img src="static/categories.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-md p-5 order-md-1">
                     <h2><span class="text-danger">Categorize</span> Your Cravings</h2>
                     <p class="lead">
                         Betting on breakfast? Dying for dessert? Promised some pasta? 
@@ -84,15 +87,12 @@
                         <i class="bi bi-chevron-right"></i> Categories
                     </a>
                 </div>
-                <div class="col-md">
-                    <img src="static/categories.svg" class="img-fluid" alt="">
-                </div>
             </div>
         </div>
     </section>
     <div id="random" class="mn5"></div>
     <section id="random" class="p-5">
-        <div class="container">
+        <div class="container-md">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md">
                     <img src="static/random.svg" class="img-fluid" alt="">
@@ -114,8 +114,11 @@
     </section>
     <div id="ingredients" class="mn5"></div>
     <section id="ingredients" class="p-5 bg-dark text-light">
-        <div class="container">
+        <div class="container-md">
             <div class="row align-items-center justify-content-between">
+                <div class="col-md order-md-2">
+                    <img src="static/ingredients.svg" class="img-fluid" alt="">
+                </div>
                 <div class="col-md p-5">
                     <h2>Include Your <span class="text-danger">Ingredients</span></h2>
                     <p class="lead">
@@ -124,12 +127,9 @@
                     <p>
                         Easily find a list of recipes that contain a special ingredient. 
                     </p>
-                    <a href="/ingredients" class="btn btn-light mt-3">
+                    <a href="/ingredients" class="btn btn-light mt-3 order-md-1">
                         <i class="bi bi-chevron-right"></i> Ingredients
                     </a>
-                </div>
-                <div class="col-md">
-                    <img src="static/ingredients.svg" class="img-fluid" alt="">
                 </div>
             </div>
         </div>
