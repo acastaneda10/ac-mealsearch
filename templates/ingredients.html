@@ -8,22 +8,46 @@
 <section class="p-3">
     <div class="container-md">
         <h1 class="text-center">Ingredients</h1>
+        <label for="myInput"><h3>Ingredient Filter:</h3></label>
+        <input class="w-100" type="text" id="myInput" placeholder="Type in an ingredient!" title="Type in an ingredient!">
     </div>
 </section>
 <section>
     <div class="container-md">
-        <div class="row g-3">
+        <div class="row g-3" id="IngredientList">
             {% for ingredient in ingredients %}
                 <a href="/ingredients?search={{ingredient['strIngredient']}}" class="col-md-6 col-lg-2 text-decoration-none text-black">
                     <div class="card bg-light h-100">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ingredient['strIngredient']}}</h5>
-                        </div>
+                        <h5 class="card-body text-center text-align-center" id="IngredientName">{{ingredient['strIngredient']}}</h5>
                     </div>
                 </a>
             {% endfor %}
         </div>
     </div>
 </section>
+<script>
+
+    document.getElementById("myInput").addEventListener("input", myFunction);
+
+    function myFunction() {
+      // Declare variables
+      var input, filter, ul, li, a, i, txtValue;
+      input = document.getElementById('myInput');
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("IngredientList");
+      li = ul.getElementsByTagName('a');
+    
+      // Loop through all list items, and hide those who don't match the search query
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("h5")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+</script>
 
 {% endblock %}

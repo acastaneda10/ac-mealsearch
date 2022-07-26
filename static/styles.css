@@ -46,6 +46,10 @@ body{
     margin-right: auto;
 }
 
+.mw{
+    min-width: 142px;
+}
+
 @media(min-width: 768px){
     .search-input{
         width:50%;

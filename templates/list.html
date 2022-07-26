@@ -22,13 +22,13 @@
 
                         <form action="/details" method="get" class="mb-2">
                             <input name="id" type="hidden" value="{{meal['idMeal']}}">
-                            <input class="btn btn-outline-primary" type="submit" value="See Details">
+                            <input class="btn btn-outline-primary mw" type="submit" value="See Details">
                         </form>
     
                         <form action="/add_favorite" method="post">
                             <input name="id" type="hidden" value="{{meal['idMeal']}}">
                             <input name="meal_name" type="hidden" value="{{meal['strMeal']}}">
-                            <input class="btn btn-outline-danger" name="select" type="submit" value="Add to Favorites">
+                            <input class="btn btn-outline-danger mw" name="select" type="submit" value="Add to Favorites">
                         </form>
                     </div>
                 </div>
