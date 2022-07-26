@@ -1,6 +1,7 @@
 import os
 import requests
 import urllib.parse
+import re
 
 from flask import redirect, render_template, request, session, flash
 from functools import wraps
@@ -84,6 +85,8 @@ def mealdetails(id):
     response = requests.get(url)
     response.raise_for_status()
     meals = response.json()['meals']
+    for meal in meals:
+        meal['strInstructions'] = re.sub('(|\s)+(\d)+(\.|\))+(|\s)|(|\s)+Step+(|\s)+\d+(|\s)', '', meal['strInstructions'])
     return meals
 
 def mealrandom():
